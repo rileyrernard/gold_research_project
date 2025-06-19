@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold's New Gambit: An Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!--
+    Narrative & Structure Plan:
+    1. Hero Section: Hook with title and key stat.
+    2. Fed's Dilemma: Explain the rate hold and visualize the "Hawkish vs. Dovish" scenarios using an HTML/CSS flowchart.
+    3. Old Rules vs. New Reality: Use a dual-chart layout to contrast the traditional gold/yield relationship with the new gold/USD decoupling.
+    4. Structural Tailwinds: Showcase Geopolitical Risk and Central Bank Buying with icons and a prominent bar chart.
+    5. Demand Deep Dive: Use a donut chart for the Q1 2025 demand breakdown and a grouped bar chart to show the YoY shift.
+    6. Market Psychology: Visualize the "Crowded Trade" sentiment and key speculative positioning data.
+    7. History & Forecast: Use an ordered bar chart for historical performance and styled cards for future price scenarios.
+    8. AI Analysis (NEW): Add an interactive section powered by the Gemini API for custom scenario analysis.
+    9. Footer: Concluding statement.
+
+    Visualization Choices:
+    - Big Numbers (HTML/CSS): For rates, stats. Goal: Inform. Justification: High impact.
+    - HTML/CSS Flowchart: For Fed scenarios. Goal: Organize. Justification: Shows process without banned SVG/Mermaid.
+    - Line Chart (Chart.js/Canvas): For Gold vs. Real Yields. Goal: Relationships. Justification: Classic correlation plot.
+    - Dual-Axis Line Chart (Plotly.js/WebGL): For Gold vs. USD. Goal: Compare. Justification: Needed for different scales, avoids SVG.
+    - Bar Chart (Chart.js/Canvas): For Central Bank buying. Goal: Compare. Justification: Shows magnitude change effectively.
+    - Donut Chart (Chart.js/Canvas): For demand breakdown. Goal: Composition. Justification: Standard for parts-of-a-whole.
+    - Grouped Bar Chart (Chart.js/Canvas): For YoY demand change. Goal: Compare. Justification: Direct category-to-category comparison.
+    - Ordered Bar Chart (Chart.js/Canvas): For historical returns. Goal: Rank. Justification: Shows magnitude and order.
+    - Styled Cards (HTML/CSS): For forecasts. Goal: Inform/Organize. Justification: Clear segmentation of scenarios.
+    - Unicode Icons: For geopolitical risk. Goal: Inform. Justification: Visual shorthand without images/SVG.
+    - Gemini API Integration: For AI Analysis. Goal: Interact/Explore. Justification: Provides dynamic, personalized insights.
+
+    CRITICAL CONFIRMATION:
+    - NO Mermaid JS was used.
+    - NO SVG graphics were used. All charts are rendered to Canvas or WebGL. All diagrams are structured HTML/CSS.
+    - Color Palette Chosen: "Brilliant Blues"
+    -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F0F4F8; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 320px; max-height: 400px; }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+        .text-balance { text-wrap: balance; }
+        .kpi-card { background-color: #005F73; color: white; }
+        .highlight-blue { color: #0A9396; }
+        .highlight-orange { color: #EE9B00; }
+        .highlight-red { color: #AE2012; }
+        .section-card { background-color: white; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); padding: 1.5rem; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center py-8 md:py-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#005F73] tracking-tight text-balance">Gold's New Gambit</h1>
+            <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto text-balance">Why the Fed's rate pause is just one piece of a much larger puzzle driving the precious metal.</p>
+        </header>
+
+        <main class="space-y-12">
+
+            <section class="section-card">
+                <h2 class="text-3xl font-bold text-center mb-2">The Federal Reserve's Dilemma</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">The decision to hold interest rates in the <span class="font-bold highlight-blue text-2xl">4.25% - 4.50%</span> range reflects a deep uncertainty. The market's reaction hinges not on the pause itself, but on the Fed's forward guidance.</p>
+                <div class="grid grid-cols-1 md:grid-cols-11 gap-4 items-center">
+                    <div class="md:col-span-5 section-card border-l-4 border-[#EE9B00]">
+                        <h3 class="font-bold text-xl text-[#EE9B00]">A "Dovish Hold" 🕊️</h3>
+                        <p class="mt-2 text-sm text-gray-600">If the Fed emphasizes growth risks and signals more rate cuts are coming...</p>
+                        <ul class="mt-4 space-y-2 text-sm">
+                            <li class="flex items-center"><span class="font-bold text-red-500 mr-2">↓</span> Weaker U.S. Dollar</li>
+                            <li class="flex items-center"><span class="font-bold text-red-500 mr-2">↓</span> Lower Real Yields</li>
+                            <li class="flex items-center font-bold text-green-600"><span class="text-green-500 mr-2">↑</span> BULLISH FOR GOLD</li>
+                        </ul>
+                    </div>
+                    <div class="text-center font-bold text-2xl text-gray-500 hidden md:block">VS</div>
+                     <div class="md:col-span-5 section-card border-l-4 border-[#AE2012]">
+                        <h3 class="font-bold text-xl text-[#AE2012]">A "Hawkish Hold" 🦅</h3>
+                        <p class="mt-2 text-sm text-gray-600">If the Fed emphasizes "sticky" inflation and signals rates will stay higher for longer...</p>
+                        <ul class="mt-4 space-y-2 text-sm">
+                            <li class="flex items-center"><span class="font-bold text-green-500 mr-2">↑</span> Stronger U.S. Dollar</li>
+                            <li class="flex items-center"><span class="font-bold text-green-500 mr-2">↑</span> Higher Real Yields</li>
+                            <li class="flex items-center font-bold text-red-600"><span class="text-red-500 mr-2">↓</span> BEARISH FOR GOLD</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="section-card">
+                     <h3 class="text-2xl font-bold text-center mb-1">The Old Rules...</h3>
+                     <p class="text-center text-gray-600 mb-4 text-sm">Traditionally, gold has a strong inverse relationship with real yields. Higher yields increase the opportunity cost of holding non-yielding gold.</p>
+                    <div class="chart-container">
+                        <canvas id="realYieldsChart"></canvas>
+                    </div>
+                </div>
+                 <div class="section-card">
+                    <h3 class="text-2xl font-bold text-center mb-1">...Meet the New Reality</h3>
+                    <p class="text-center text-gray-600 mb-4 text-sm">Recently, this relationship has broken down. Intense geopolitical risk and de-dollarization trends have caused both gold and the US Dollar to rise together.</p>
+                     <div class="chart-container">
+                        <div id="goldVsDollarChart" class="w-full h-full"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section-card">
+                 <h2 class="text-3xl font-bold text-center mb-8">The Structural Tailwinds Reshaping the Market</h2>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                     <div>
+                         <h3 class="text-2xl font-bold mb-4 text-center">The Geopolitical "Fear Premium"</h3>
+                         <div class="space-y-4 text-center">
+                            <div class="p-4 bg-red-50 rounded-lg">
+                                 <span class="text-3xl">⚔️</span>
+                                 <p class="font-semibold mt-2">Intensifying Conflicts</p>
+                                 <p class="text-sm text-gray-600">Escalating tensions in the Middle East drive a flight to safety, boosting demand for gold as a "crisis hedge".</p>
+                             </div>
+                             <div class="p-4 bg-blue-50 rounded-lg">
+                                 <span class="text-3xl">🇨🇳🆚🇺🇸</span>
+                                 <p class="font-semibold mt-2">Strategic Competition</p>
+                                 <p class="text-sm text-gray-600">Ongoing U.S.-China trade and tech rivalry creates persistent economic uncertainty, supporting gold's role as a store of value.</p>
+                             </div>
+                         </div>
+                     </div>
+                     <div>
+                         <h3 class="text-2xl font-bold mb-4 text-center">The Central Bank Buying Spree</h3>
+                         <p class="text-center text-gray-600 mb-4 text-sm">Driven by a strategic desire to diversify away from the U.S. Dollar, central banks have become massive, price-insensitive buyers of gold.</p>
+                         <div class="chart-container">
+                             <canvas id="centralBankChart"></canvas>
+                         </div>
+                     </div>
+                 </div>
+            </section>
+            
+            <section class="section-card">
+                <h2 class="text-3xl font-bold text-center mb-8">A Market Divided: Global Demand Deep Dive (Q1 2025)</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-center">Demand by Sector</h3>
+                         <p class="text-center text-gray-600 mb-4 text-sm">Investment and official sector demand is overpowering weakness in price-sensitive consumer segments like jewelry.</p>
+                        <div class="chart-container mx-auto" style="max-width: 350px;">
+                            <canvas id="demandDonutChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-center">Year-over-Year Shift</h3>
+                        <p class="text-center text-gray-600 mb-4 text-sm">The dramatic +170% surge in investment demand illustrates that the market is being driven by financial and strategic motivations, not consumerism.</p>
+                        <div class="chart-container">
+                            <canvas id="demandYoYChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="section-card text-center">
+                    <h3 class="text-2xl font-bold mb-4">Market Psychology: A "Crowded Trade"?</h3>
+                    <p class="text-gray-600 mb-6">For three straight months, fund managers have called "long gold" the market's most crowded trade. While this signals strong bullish consensus, it also raises the risk of sharp reversals if sentiment shifts.</p>
+                     <div class="w-full bg-gray-200 rounded-full h-8 dark:bg-gray-700">
+                      <div class="bg-gradient-to-r from-[#EE9B00] to-[#AE2012] h-8 rounded-full flex items-center justify-center text-white font-bold" style="width: 85%">HIGHLY CROWDED</div>
+                    </div>
+                </div>
+                <div class="section-card text-center">
+                     <h3 class="text-2xl font-bold mb-4">Speculative Positioning</h3>
+                     <p class="text-gray-600 mb-4">Speculators in the futures market are heavily positioned for higher prices, holding a large net-long position.</p>
+                    <p class="text-6xl font-black highlight-blue">187,500</p>
+                    <p class="text-gray-500 font-semibold">Net-Long Contracts (Managed Money)</p>
+                </div>
+            </section>
+            
+             <section class="section-card">
+                <h2 class="text-3xl font-bold text-center mb-8">History as a Guide & Future Scenarios</h2>
+                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                     <div class="lg:col-span-3">
+                         <h3 class="text-2xl font-bold mb-4 text-center">Gold's Performance After Past Fed Pauses</h3>
+                         <p class="text-center text-gray-600 mb-4 text-sm">History shows gold tends to perform strongly in the 12 months after the Fed stops hiking rates, as the market begins to anticipate future easing.</p>
+                         <div class="chart-container">
+                            <canvas id="historyChart"></canvas>
+                        </div>
+                     </div>
+                     <div class="lg:col-span-2 space-y-4">
+                         <h3 class="text-2xl font-bold text-center lg:text-left">Price Forecasts (12-18 Months)</h3>
+                         <div class="p-4 rounded-lg border-l-4 border-[#0A9396]">
+                             <p class="font-bold text-lg text-[#0A9396]">Primary Forecast</p>
+                             <p class="text-2xl font-black">$3,400<span class="text-sm font-semibold text-gray-500">/oz</span></p>
+                             <p class="text-sm text-gray-600">Consolidation, followed by a grind higher driven by structural support.</p>
+                         </div>
+                         <div class="p-4 rounded-lg border-l-4 border-green-500">
+                             <p class="font-bold text-lg text-green-600">Bullish Scenario</p>
+                             <p class="text-2xl font-black">$3,700 - $4,000<span class="text-sm font-semibold text-gray-500">/oz</span></p>
+                             <p class="text-sm text-gray-600">Triggered by a clear Fed dovish pivot and/or geopolitical escalation.</p>
+                         </div>
+                         <div class="p-4 rounded-lg border-l-4 border-red-500">
+                             <p class="font-bold text-lg text-red-600">Bearish Scenario</p>
+                              <p class="text-2xl font-black">$3,300<span class="text-sm font-semibold text-gray-500">/oz</span></p>
+                             <p class="text-sm text-gray-600">Triggered by a surprise hawkish Fed and a durable de-escalation in global conflicts.</p>
+                         </div>
+                     </div>
+                 </div>
+            </section>
+
+            <section class="section-card">
+                <h2 class="text-3xl font-bold text-center mb-2">✨ AI-Powered Scenario Analysis</h2>
+                <p class="text-center text-gray-600 mb-6 max-w-3xl mx-auto">Curious how a specific event could affect gold? Enter a hypothetical scenario below and let our AI analyst provide a potential outlook.</p>
+                <div class="max-w-xl mx-auto">
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <input type="text" id="scenarioInput" class="flex-grow p-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#0A9396] focus:border-[#0A9396]" placeholder="e.g., 'OPEC unexpectedly cuts oil production by 50%'...">
+                        <button id="analyzeScenarioBtn" class="bg-[#005F73] hover:bg-[#0A9396] text-white font-bold py-3 px-6 rounded-md transition-colors duration-300 flex items-center justify-center">
+                            <span class="mr-2">✨</span> Generate Analysis
+                        </button>
+                    </div>
+                    <div id="aiAnalysisResult" class="mt-6 p-4 border border-gray-200 rounded-lg bg-gray-50" style="display: none;">
+                        <p id="aiAnalysisContent" class="text-gray-700"></p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center py-12">
+            <p class="text-md text-gray-500 max-w-2xl mx-auto text-balance">
+                <strong>Conclusion:</strong> Gold's future is being forged by a new set of rules, where strategic central bank demand and persistent geopolitical risk now rival the influence of traditional monetary policy.
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const FONT_COLOR = '#374151';
+            const GRID_COLOR = '#E5E7EB';
+            const PALETTE = {
+                blue: '#0A9396',
+                teal: '#94D2BD',
+                yellow: '#E9D8A6',
+                orange: '#EE9B00',
+                red: '#AE2012',
+                darkBlue: '#005F73',
+            };
+
+            const wrapLabel = (str, maxLen = 16) => {
+                if (str.length <= maxLen) {
+                    return str;
+                }
+                const words = str.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + ' ' + word).length > maxLen && currentLine.length > 0) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine = currentLine ? currentLine + ' ' + word : word;
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+            
+            const CHART_DEFAULTS = {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: FONT_COLOR,
+                            font: { size: 12 }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                           title: tooltipTitleCallback
+                        },
+                        backgroundColor: '#FFF',
+                        titleColor: '#333',
+                        bodyColor: '#666',
+                        borderColor: '#DDD',
+                        borderWidth: 1,
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: FONT_COLOR, font: { size: 12 } },
+                        grid: { color: GRID_COLOR }
+                    },
+                    y: {
+                        ticks: { color: FONT_COLOR, font: { size: 12 } },
+                        grid: { color: GRID_COLOR }
+                    }
+                },
+                maintainAspectRatio: false,
+            };
+
+            const createRealYieldsChart = () => {
+                const ctx = document.getElementById('realYieldsChart');
+                if(!ctx) return;
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Gold Price',
+                            data: [1800, 1850, 1900, 1820, 1750, 1700],
+                            borderColor: PALETTE.orange,
+                            backgroundColor: PALETTE.orange + '33',
+                            fill: true,
+                            tension: 0.4,
+                            yAxisID: 'y'
+                        }, {
+                            label: 'Real Yields',
+                            data: [1, 1.2, 1.5, 2.0, 2.5, 2.8],
+                            borderColor: PALETTE.darkBlue,
+                            backgroundColor: PALETTE.darkBlue + '33',
+                            fill: false,
+                            tension: 0.4,
+                            yAxisID: 'y1'
+                        }]
+                    },
+                    options: { ...CHART_DEFAULTS,
+                        scales: {
+                           y: { position: 'left', grid: { drawOnChartArea: false }, ticks: { color: PALETTE.orange } },
+                           y1: { position: 'right', grid: { drawOnChartArea: true, color: GRID_COLOR }, ticks: { color: PALETTE.darkBlue } },
+                           x: { ticks: { color: FONT_COLOR }, grid: { color: GRID_COLOR } }
+                        }
+                    }
+                });
+            };
+
+            const createGoldVsDollarChart = () => {
+                const container = document.getElementById('goldVsDollarChart');
+                 if(!container) return;
+                const goldTrace = {
+                    x: ['Q1 23', 'Q2 23', 'Q3 23', 'Q4 23', 'Q1 24', 'Q2 24', 'Q3 24', 'Q4 24', 'Q1 25'],
+                    y: [1900, 1950, 1920, 2050, 2200, 2350, 2300, 3200, 3400],
+                    name: 'Gold Price (USD)',
+                    type: 'scattergl',
+                    mode: 'lines+markers',
+                    line: { color: PALETTE.orange, width: 3 },
+                    yaxis: 'y1'
+                };
+                const dxyTrace = {
+                    x: ['Q1 23', 'Q2 23', 'Q3 23', 'Q4 23', 'Q1 24', 'Q2 24', 'Q3 24', 'Q4 24', 'Q1 25'],
+                    y: [102, 103, 106, 103, 104, 105, 106, 107, 108],
+                    name: 'USD Index (DXY)',
+                    type: 'scattergl',
+                    mode: 'lines',
+                    line: { color: PALETTE.darkBlue, width: 2, dash: 'dash' },
+                    yaxis: 'y2'
+                };
+                const layout = {
+                    margin: { l: 50, r: 50, b: 50, t: 20 },
+                    legend: { x: 0.5, y: 1.1, xanchor: 'center', orientation: 'h' },
+                    yaxis: { title: 'Gold Price', titlefont: { color: PALETTE.orange }, tickfont: { color: PALETTE.orange } },
+                    yaxis2: { title: 'DXY', titlefont: { color: PALETTE.darkBlue }, tickfont: { color: PALETTE.darkBlue }, overlaying: 'y', side: 'right' },
+                    font: { color: FONT_COLOR, family: 'Inter' },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    xaxis: { gridcolor: GRID_COLOR },
+                };
+                Plotly.newPlot(container, [goldTrace, dxyTrace], layout, {responsive: true, displayModeBar: false});
+            };
+
+            const createCentralBankChart = () => {
+                const ctx = document.getElementById('centralBankChart');
+                if(!ctx) return;
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['2010s Average', '2022', '2023', '2024 (e)', '2025 (f)'],
+                        datasets: [{
+                            label: 'Net Purchases (tonnes)',
+                            data: [450, 1082, 1037, 1050, 900],
+                            backgroundColor: [PALETTE.teal, PALETTE.darkBlue, PALETTE.darkBlue, PALETTE.darkBlue, PALETTE.blue],
+                        }]
+                    },
+                    options: { ...CHART_DEFAULTS, plugins: { ...CHART_DEFAULTS.plugins, legend: { display: false } } }
+                });
+            };
+
+            const createDemandDonutChart = () => {
+                const ctx = document.getElementById('demandDonutChart');
+                if(!ctx) return;
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Investment', 'Jewellery', 'Central Banks', 'Technology'],
+                        datasets: [{
+                            label: 'Demand (tonnes)',
+                            data: [551.9, 380.3, 243.7, 80.5],
+                            backgroundColor: [PALETTE.blue, PALETTE.orange, PALETTE.darkBlue, PALETTE.teal],
+                            borderColor: '#FFFFFF',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: { ...CHART_DEFAULTS,
+                       plugins: { legend: { position: 'bottom' } },
+                       scales: { x: { display: false }, y: { display: false } }
+                    }
+                });
+            };
+
+            const createDemandYoYChart = () => {
+                const ctx = document.getElementById('demandYoYChart');
+                if(!ctx) return;
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [wrapLabel('Jewellery Consumption'), wrapLabel('Investment (Total)'), wrapLabel('Central Banks')],
+                        datasets: [
+                            {
+                                label: 'Q1 2024 (tonnes)',
+                                data: [480.1, 204.4, 309.9],
+                                backgroundColor: PALETTE.teal,
+                            },
+                            {
+                                label: 'Q1 2025 (tonnes)',
+                                data: [380.3, 551.9, 243.7],
+                                backgroundColor: PALETTE.blue,
+                            }
+                        ]
+                    },
+                     options: { ...CHART_DEFAULTS,
+                       scales: { y: { beginAtZero: true } },
+                       plugins: { legend: { position: 'bottom' } },
+                    }
+                });
+            };
+
+            const createHistoryChart = () => {
+                const ctx = document.getElementById('historyChart');
+                if(!ctx) return;
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['2006 Pause', '2018 Pause', '2000 Pause'],
+                        datasets: [{
+                            label: 'Gold Return 12-Months Post-Pause',
+                            data: [18.8, 18.3, 3.6],
+                            backgroundColor: [PALETTE.darkBlue, PALETTE.blue, PALETTE.teal],
+                        }]
+                    },
+                    options: { ...CHART_DEFAULTS,
+                       indexAxis: 'y',
+                       plugins: { ...CHART_DEFAULTS.plugins, legend: { display: false } },
+                       scales: {
+                           x: {
+                               beginAtZero: true,
+                               ticks: { callback: (value) => value + '%' }
+                           }
+                       }
+                    }
+                });
+            };
+            
+            async function handleScenarioAnalysis() {
+                const scenarioInput = document.getElementById('scenarioInput');
+                const resultContainer = document.getElementById('aiAnalysisResult');
+                const resultContent = document.getElementById('aiAnalysisContent');
+                const analyzeBtn = document.getElementById('analyzeScenarioBtn');
+
+                const userScenario = scenarioInput.value.trim();
+                if (!userScenario) {
+                    resultContent.innerHTML = "Please enter a scenario to analyze.";
+                    resultContainer.style.display = 'block';
+                    return;
+                }
+                
+                analyzeBtn.disabled = true;
+                resultContent.innerHTML = "Generating analysis... please wait.";
+                resultContainer.style.display = 'block';
+
+                const prompt = `
+                    As an expert financial analyst specializing in precious metals, analyze the likely impact of the following hypothetical scenario on the price of gold.
+
+                    Current Market Context:
+                    - The US Federal Reserve is holding interest rates at 4.25-4.50%. Market is torn between a 'dovish' or 'hawkish' interpretation of this hold.
+                    - The traditional inverse relationship between gold and real yields/USD has weakened.
+                    - Major structural drivers are strong central bank buying (for de-dollarization) and a significant geopolitical risk premium.
+                    - Speculative positioning is a crowded net-long trade, suggesting bullish consensus but also vulnerability to reversals.
+                    - Investment demand is surging while consumer demand (jewelry) is weak.
+
+                    Hypothetical Scenario:
+                    "${userScenario}"
+
+                    Based on this context, provide a concise analysis in a few bullet points covering:
+                    1.  The immediate likely price direction (bullish, bearish, or neutral).
+                    2.  The key channels through which this scenario would affect gold (e.g., inflation expectations, safe-haven demand, currency fluctuations).
+                    3.  Potential counter-arguments or factors that could mitigate the effect.
+                    Format the output as a simple text with bullet points.
+                `;
+
+                try {
+                    let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; 
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API request failed with status ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    
+                    if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        resultContent.innerHTML = text.replace(/\*/g, '•').replace(/\n/g, '<br>');
+                    } else {
+                         throw new Error("Invalid response structure from API.");
+                    }
+                } catch (error) {
+                    console.error("Gemini API Error:", error);
+                    resultContent.innerHTML = "Sorry, we couldn't generate an analysis at this time. Please try again later.";
+                } finally {
+                    analyzeBtn.disabled = false;
+                }
+            }
+
+            document.getElementById('analyzeScenarioBtn').addEventListener('click', handleScenarioAnalysis);
+            createRealYieldsChart();
+            createGoldVsDollarChart();
+            createCentralBankChart();
+            createDemandDonutChart();
+            createDemandYoYChart();
+            createHistoryChart();
+        });
+    </script>
+</body>
+</html>
